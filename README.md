@@ -1,4 +1,4 @@
-# Zenterai
+# ZENTERAI
 
 Enterprise-grade, serverless file storage and collaboration platform with multi-tenant isolation, RBAC, SSO, and Apple-inspired UI.
 
