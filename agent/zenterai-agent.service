@@ -1,0 +1,17 @@
+[Unit]
+Description=Zenterai Sync Agent
+After=network.target
+
+[Service]
+Type=simple
+User=zenterai
+Group=zenterai
+WorkingDirectory=/opt/zenterai
+ExecStart=/usr/local/bin/zenterai-agent
+Restart=always
+RestartSec=10
+Environment="ZENTERAI_CONFIG=/etc/zenterai/config.json"
+
+[Install]
+WantedBy=multi-user.target
+

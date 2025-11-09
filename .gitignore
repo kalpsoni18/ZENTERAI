@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+vendor/
+.venv/
+
+# Build outputs
+dist/
+build/
+*.zip
+*.tar.gz
+
+# Environment
+.env
+.env.local
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+*.log
+
+# AWS
+.aws-sam/
+samconfig.toml
+
+# Testing
+coverage/
+.nyc_output/
+
+# Local development
+localstack-data/
+dynamodb-data/
+
+# Test PIDs
+.test-pids

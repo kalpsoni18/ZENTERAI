@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  localstack:
+    image: localstack/localstack:latest
+    ports:
+      - "4566:4566"
+      - "4571:4571"
+    environment:
+      - SERVICES=s3,dynamodb,lambda,iam,sts
+      - DEBUG=1
+      - DATA_DIR=/var/lib/localstack
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - PERSISTENCE=1
+      - LAMBDA_EXECUTOR=local
+    volumes:
+      - "./localstack-data:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4566/_localstack/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  dynamodb-local:
+    image: amazon/dynamodb-local:latest
+    ports:
+      - "8000:8000"
+    command: "-jar DynamoDBLocal.jar -sharedDb -inMemory"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
